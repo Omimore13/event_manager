@@ -20,7 +20,7 @@ class DatabaseHelper {
 
   Future<Database> _initDatabase() async {
     final databasePath = await getDatabasesPath();
-    final path = join(databasePath, 'expenses.db');
+    final path = join(databasePath, 'events.db');
 
     return await openDatabase(
       path,
@@ -31,7 +31,7 @@ class DatabaseHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE expenses(
+      CREATE TABLE events(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         description TEXT,
         title Text,
@@ -42,12 +42,12 @@ class DatabaseHelper {
 
   Future<int> insertExpense(EventDetails expense) async {
     final db = await database;
-    return await db.insert('expenses', expense.toMap());
+    return await db.insert('events', expense.toMap());
   }
 
-  Future<List<EventDetails>> getExpenses() async {
+  Future<List<EventDetails>> getevents() async {
     final db = await database;
-    final List<Map<String, dynamic>> maps = await db.query('expenses');
+    final List<Map<String, dynamic>> maps = await db.query('events');
     return List.generate(maps.length, (i) {
       return EventDetails.fromMap(maps[i]);
     });
@@ -55,6 +55,6 @@ class DatabaseHelper {
 
   Future<int> deleteExpense(int id) async {
     final db = await database;
-    return await db.delete('expenses', where: 'id = ?', whereArgs: [id]);
+    return await db.delete('events', where: 'id = ?', whereArgs: [id]);
   }
 }

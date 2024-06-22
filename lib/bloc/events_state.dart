@@ -12,12 +12,12 @@ abstract class EventsState extends Equatable {
 class EventsLoading extends EventsState {}
 
 class EventsLoaded extends EventsState {
-  final List<EventDetails> expenses;
+  final List<EventDetails> events;
 
-  const EventsLoaded(this.expenses);
+  const EventsLoaded(this.events);
 
   @override
-  List<Object> get props => [expenses];
+  List<Object> get props => [events];
 }
 
 class ExpenseError extends EventsState {

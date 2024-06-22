@@ -10,19 +10,19 @@ abstract class EventsEvent extends Equatable {
 
 class LoadEvents extends EventsEvent {}
 
-class AddExpense extends EventsEvent {
-  final EventDetails expense;
+class AddEvents extends EventsEvent {
+  final EventDetails events;
 
-  const AddExpense(this.expense);
+  const AddEvents(this.events);
 
   @override
-  List<Object> get props => [expense];
+  List<Object> get props => [events];
 }
 
-class DeleteExpense extends EventsEvent {
+class DeleteEvents extends EventsEvent {
   final int id;
 
-  const DeleteExpense(this.id);
+  const DeleteEvents(this.id);
 
   @override
   List<Object> get props => [id];

@@ -246,9 +246,9 @@ class CreateEventScreen extends StatelessWidget {
                                   ),
                                   ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: state.expenses.length,
+                                    itemCount: state.events.length,
                                     itemBuilder: (context, index) {
-                                      final expense = state.expenses[index];
+                                      final expense = state.events[index];
                                       return Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8.0, vertical: 8.0),
@@ -301,7 +301,7 @@ class CreateEventScreen extends StatelessWidget {
                                                             "ID :: ${expense.id}");
                                                         context
                                                             .read<EventsBloc>()
-                                                            .add(DeleteExpense(
+                                                            .add(DeleteEvents(
                                                                 expense.id!));
                                                       },
                                                       child: Icon(Icons.delete,
@@ -310,7 +310,7 @@ class CreateEventScreen extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                                SizedBox(
+                                               const SizedBox(
                                                   height: 12,
                                                 ),
                                                 Text(
@@ -365,7 +365,7 @@ class CreateEventScreen extends StatelessWidget {
                           description: description, title: title, date: date);
 
                       if (_titleCtrl.text.isNotEmpty) {
-                        context.read<EventsBloc>().add(AddExpense(expense));
+                        context.read<EventsBloc>().add(AddEvents(expense));
                         Fluttertoast.showToast(
                           msg: "Event Successfully added",
                           toastLength: Toast.LENGTH_SHORT,

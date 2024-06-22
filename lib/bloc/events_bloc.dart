@@ -9,28 +9,28 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
   EventsBloc(this.databaseHelper) : super(EventsLoading()) {
     on<LoadEvents>((event, emit) async {
       try {
-        final expenses = await databaseHelper.getExpenses();
-        emit(EventsLoaded(expenses));
+        final events = await databaseHelper.getevents();
+        emit(EventsLoaded(events));
       } catch (e) {
         emit(ExpenseError(e.toString()));
       }
     });
 
-    on<AddExpense>((event, emit) async {
+    on<AddEvents>((event, emit) async {
       try {
-        await databaseHelper.insertExpense(event.expense);
-        final expenses = await databaseHelper.getExpenses();
-        emit(EventsLoaded(expenses));
+        await databaseHelper.insertExpense(event.events);
+        final events = await databaseHelper.getevents();
+        emit(EventsLoaded(events));
       } catch (e) {
         emit(ExpenseError(e.toString()));
       }
     });
 
-    on<DeleteExpense>((event, emit) async {
+    on<DeleteEvents>((event, emit) async {
       try {
         await databaseHelper.deleteExpense(event.id);
-        final expenses = await databaseHelper.getExpenses();
-        emit(EventsLoaded(expenses));
+        final events = await databaseHelper.getevents();
+        emit(EventsLoaded(events));
       } catch (e) {
         emit(ExpenseError(e.toString()));
       }

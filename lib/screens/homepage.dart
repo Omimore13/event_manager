@@ -101,7 +101,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-
   ///Events List Layout Code
   Widget _eventsListLayout(ctx) {
     final daysInMonth = DateTime(selectedYear, selectedMonth + 1, 0).day;
@@ -161,27 +160,6 @@ class _HomePageState extends State<HomePage> {
                       width: 2,
                       decoration: BoxDecoration(color: Clr().textSecondary),
                     ),
-                    // Expanded(
-                    //   child: BlocBuilder<EventsBloc, EventsState>(
-                    //     builder: (context, state) {
-                    //       if (state is EventsLoading) {
-                    //         return Center(child: CircularProgressIndicator());
-                    //       } else if (state is EventsLoaded) {
-                    //         final expense = state.expenses.length;
-                    //         print("Expense :: ${expense.title}");
-                    //         return Column(
-                    //           children: [
-                    //             // Text("14:00"),
-                    //             Text(expense.title.toString()),
-                    //           ],
-                    //         );
-                    //       } else {
-                    //         return Container();
-                    //       }
-                    //     },
-                    //   ),
-                    //   // child:  Text(expense.title.toString()),
-                    // ),
                   ],
                 ),
               );
@@ -191,9 +169,6 @@ class _HomePageState extends State<HomePage> {
         } else {
           return Container();
         }
-
-        //
-        // return Center(child: CircularProgressIndicator());
       },
     );
   }
